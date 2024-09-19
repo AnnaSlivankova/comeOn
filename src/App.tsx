@@ -2,7 +2,6 @@ import {SnackbarProvider} from "./components/snackbar/snackbar-provider.tsx";
 import {AppBar, Toolbar} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import GamePage from "./pages/game-page.tsx";
-import Box from "@mui/material/Box";
 
 function App() {
 
@@ -16,9 +15,7 @@ function App() {
             </Typography>
           </Toolbar>
         </AppBar>
-        {/*<Box sx={{mt: 8, p: 2}}>*/}
-          <GamePage/>
-        {/*</Box>*/}
+        <GamePage/>
       </SnackbarProvider>
     </>
   )
