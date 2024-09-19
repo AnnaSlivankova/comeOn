@@ -1,4 +1,4 @@
-import {StrictMode, Suspense} from 'react'
+import {Suspense} from 'react'
 import {createRoot} from 'react-dom/client'
 import App from './App.tsx'
 import "@fontsource/roboto/300.css";

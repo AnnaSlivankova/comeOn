@@ -9,7 +9,7 @@ const Timer: FC<Props> = ({isActive}) => {
   // const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    let timer;
+    let timer: number;
 
     if (isActive && timeLeft > 0) {
       timer = setInterval(() => {
