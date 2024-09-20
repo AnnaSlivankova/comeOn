@@ -30,7 +30,7 @@ const Game: FC<Props> = ({name, surname}) => {
   const [scaledCoordinates, setScaledCoordinates] = useState<any[]>([])
   const imgRef = useRef<HTMLImageElement | null>(null)
 
-  console.log('foundItems', foundItems)
+  // console.log('foundItems', foundItems)
 
   const updateCoordinates = () => {
     if (imgRef.current) {
@@ -72,11 +72,11 @@ const Game: FC<Props> = ({name, surname}) => {
       showSnackbar('УРА! Все кролики найдены!', "success")
       setStartTimer(false)
       setMessage('Поздравляем! Вы нашли все элементы!')
+      console.log(`${name} ${surname} - ${foundItems.length} items`)
     }
   }, [foundItems])
 
   const handleImageClickCoords = (e: React.MouseEvent<HTMLImageElement>) => {
-    // debugger
     const rect = e.currentTarget.getBoundingClientRect()
     const x = e.clientX - rect.left // координата X
     const y = e.clientY - rect.top // координата Y
@@ -92,10 +92,14 @@ const Game: FC<Props> = ({name, surname}) => {
     })
   }
 
+  const handleTimeLeft = () => {
+    console.log(`${name} ${surname} - ${foundItems.length} items`)
+  }
+
   return (
     <div style={{textAlign: 'center'}}>
       <h2>{`${name} ${surname} у тебя осталось ⏱️👇`}</h2>
-      <Timer isActive={startTimer}/>
+      <Timer isActive={startTimer} onTimeLeft={handleTimeLeft}/>
       {message && <h3>{message}</h3>}
       <div style={{position: 'relative', display: 'inline-block'}}>
         <img
@@ -132,5 +136,4 @@ export default memo(Game)
 type Props = {
   name: string
   surname: string
-  // startTimer:boolean
 }

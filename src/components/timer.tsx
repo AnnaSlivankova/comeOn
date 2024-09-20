@@ -1,11 +1,8 @@
 import {FC, useEffect, useState} from 'react';
 
-type Props = {
-  isActive: boolean
-}
-
-const Timer: FC<Props> = ({isActive}) => {
-  const [timeLeft, setTimeLeft] = useState(300); // 5 минут в секундах
+const Timer: FC<Props> = ({isActive, onTimeLeft}) => {
+  // const [timeLeft, setTimeLeft] = useState(300); // 5 минут в секундах
+  const [timeLeft, setTimeLeft] = useState(20); // 1 минут в секундах
   // const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -15,6 +12,10 @@ const Timer: FC<Props> = ({isActive}) => {
       timer = setInterval(() => {
         setTimeLeft((prev) => prev - 1);
       }, 1000);
+    }
+
+    if (timeLeft === 0) {
+      onTimeLeft()
     }
 
     return () => {
@@ -36,3 +37,8 @@ const Timer: FC<Props> = ({isActive}) => {
 };
 
 export default Timer;
+
+type Props = {
+  isActive: boolean
+  onTimeLeft: () => void
+}
