@@ -11,7 +11,7 @@ function App() {
         <AppBar position="sticky">
           <Toolbar>
             <Typography variant="h6" component="div" sx={{flexGrow: 1, textAlign: 'center'}}>
-              Come-On GAME time
+              ComeON GAMEon
             </Typography>
           </Toolbar>
         </AppBar>
