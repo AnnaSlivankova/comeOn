@@ -23,7 +23,8 @@ const itemCoordinates = [
 
 const Game: FC<Props> = ({name, surname}) => {
   console.log('render Game')
-  const [createPlayer, {isLoading, isError}] = useAddPlayerMutation()
+  // const [createPlayer, {isLoading, isError}] = useAddPlayerMutation()
+  const [createPlayer] = useAddPlayerMutation()
   const {showSnackbar} = useSnackbar();
   const [startTimer, setStartTimer] = useState<boolean>(true)
 

@@ -3,7 +3,6 @@ import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux'
 import {configureStore} from '@reduxjs/toolkit'
 import {setupListeners} from '@reduxjs/toolkit/query'
 import {baseApi} from "./base-api.ts";
-import {playersService} from "./players.service.ts";
 
 export const store: any = configureStore({
   reducer: {
