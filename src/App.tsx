@@ -2,11 +2,13 @@ import {SnackbarProvider} from "./components/snackbar/snackbar-provider.tsx";
 import {AppBar, Toolbar} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import GamePage from "./pages/game-page.tsx";
+import {Provider} from "react-redux";
+import {store} from "./services/store.ts";
 
 function App() {
 
   return (
-    <>
+    <Provider store={store}>
       <SnackbarProvider>
         <AppBar position="sticky">
           <Toolbar>
@@ -17,7 +19,7 @@ function App() {
         </AppBar>
         <GamePage/>
       </SnackbarProvider>
-    </>
+    </Provider>
   )
 }
 

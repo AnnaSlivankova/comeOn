@@ -1,6 +1,7 @@
 import {useState, useEffect, FC, useRef, memo} from 'react'
 import {useSnackbar} from "../components/snackbar/snackbar-provider.tsx";
 import Timer from "../components/timer.tsx";
+import {useAddPlayerMutation} from "../services/players.service.ts";
 
 const originalWidth = 1500 // оригинальная ширина
 const originalHeight = 880 // оригинальная высота
@@ -22,6 +23,7 @@ const itemCoordinates = [
 
 const Game: FC<Props> = ({name, surname}) => {
   console.log('render Game')
+  const [createPlayer, {isLoading, isError}] = useAddPlayerMutation()
   const {showSnackbar} = useSnackbar();
   const [startTimer, setStartTimer] = useState<boolean>(true)
 
@@ -72,6 +74,7 @@ const Game: FC<Props> = ({name, surname}) => {
       showSnackbar('УРА! Все кролики найдены!', "success")
       setStartTimer(false)
       setMessage('Поздравляем! Вы нашли все элементы!')
+      createPlayer({name, surname, score: foundItems.length, time: '00:00'})
       console.log(`${name} ${surname} - ${foundItems.length} items`)
     }
   }, [foundItems])
