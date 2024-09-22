@@ -4,9 +4,10 @@ import Typography from "@mui/material/Typography";
 import GamePage from "./pages/game-page.tsx";
 import {Provider} from "react-redux";
 import {store} from "./services/store.ts";
+import {API_URL} from "./app-settings.ts";
 
 function App() {
-
+  console.log(API_URL)
   return (
     <Provider store={store}>
       <SnackbarProvider>
