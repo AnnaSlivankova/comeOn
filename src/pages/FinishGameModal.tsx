@@ -9,7 +9,8 @@ function FinishGameModal({open, handleClose, name, surname, score, timeLeft}: Pr
   const [modalOpen, setModalOpen] = useState(open)
 
   const onHandleClose = () => {
-    setModalOpen(false)
+    // setModalOpen(false)
+    setModalOpen(true)
     handleClose()
   }
 
