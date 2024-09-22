@@ -1,8 +1,9 @@
 import {FC, useEffect, useState} from 'react';
+import {CONFIG} from "../app-settings.ts";
 
-const Timer: FC<Props> = ({isActive, onTimeLeft}) => {
+const Timer: FC<Props> = ({isActive, onTimeLeft, onTick}) => {
   // const [timeLeft, setTimeLeft] = useState(300); // 5 минут в секундах
-  const [timeLeft, setTimeLeft] = useState(20); // 1 минут в секундах
+  const [timeLeft, setTimeLeft] = useState(CONFIG.GAME_TIME);
   // const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
@@ -11,6 +12,7 @@ const Timer: FC<Props> = ({isActive, onTimeLeft}) => {
     if (isActive && timeLeft > 0) {
       timer = setInterval(() => {
         setTimeLeft((prev) => prev - 1);
+        onTick(timeLeft - 1)
       }, 1000);
     }
 
@@ -41,4 +43,5 @@ export default Timer;
 type Props = {
   isActive: boolean
   onTimeLeft: () => void
+  onTick: (timeLeft: number) => void
 }

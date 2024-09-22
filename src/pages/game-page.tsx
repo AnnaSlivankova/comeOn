@@ -1,6 +1,6 @@
 import Game from "./Game.tsx";
 import {useState} from "react";
-import BasicModal from "../components/modal/modal.tsx";
+import RegisterModal from "./RegisterModal.tsx";
 
 export default function GamePage() {
   const [open, setOpen] = useState(true)
@@ -16,7 +16,7 @@ export default function GamePage() {
 
   return (
     <>
-      <BasicModal open={open} handleClose={onHandleClose}/>
+      <RegisterModal open={open} handleClose={onHandleClose}/>
       {name && surname && <Game name={name} surname={surname}/>}
     </>
   )

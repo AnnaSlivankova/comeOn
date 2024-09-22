@@ -1,0 +1,58 @@
+import BasicModal from "../components/modal/modal.tsx";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid2";
+import {Button, Card, Stack} from "@mui/material";
+import Box from "@mui/material/Box";
+import {ContTextField} from "../components/hook-form";
+import {memo, useState} from "react";
+import {CONFIG} from "../app-settings.ts";
+
+function FinishGameModal({open, handleClose, name, surname, score, timeLeft}: Props) {
+  const [modalOpen, setModalOpen] = useState(open)
+
+  const onHandleClose = () => {
+    setModalOpen(false)
+    handleClose()
+  }
+
+  return (
+    <BasicModal open={modalOpen}>
+      <Grid container spacing={2}>
+        <Card sx={{width: '90%', maxWidth: 400, p: 2}}>
+
+          <Typography id="modal-modal-title" variant="h5" component="h2" sx={{textAlign: 'center'}}>
+            {`${name} ${surname}`}
+          </Typography>
+
+          {timeLeft === 0 &&  <Typography id="modal-modal-title" variant="h6" component="h2" sx={{textAlign: 'center'}}>
+            закончилось время 🤷🏻‍♀️
+          </Typography>}
+
+          <Typography id="modal-modal-description" sx={{mt: 2, textAlign: 'center'}}>
+            {score === CONFIG.TOTAL_ELEMENTS ? `Ты нашел/нашла ВСЕ элементы на картинке 🎉 !`
+            :
+              `Ты нашел/нашла ${score} элементов на картинке!`
+            }
+          </Typography>
+
+          {score > 0 && <Typography id="modal-modal-description" sx={{mt: 2, textAlign: 'center'}}>
+            {`остаток времени: ${timeLeft} сек.!`}
+          </Typography>}
+
+          <Button variant="contained" fullWidth sx={{mt: 2}} onClick={onHandleClose}>finish</Button>
+        </Card>
+      </Grid>
+    </BasicModal>
+  )
+}
+
+export default memo(FinishGameModal)
+
+type Props = {
+  open: boolean
+  handleClose: () => void
+  name: string
+  surname: string
+  score: number
+  timeLeft: number
+}
