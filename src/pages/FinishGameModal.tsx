@@ -1,9 +1,7 @@
 import BasicModal from "../components/modal/modal.tsx";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid2";
-import {Button, Card, Stack} from "@mui/material";
-import Box from "@mui/material/Box";
-import {ContTextField} from "../components/hook-form";
+import {Button, Card} from "@mui/material";
 import {memo, useState} from "react";
 import {CONFIG} from "../app-settings.ts";
 
