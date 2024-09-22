@@ -26,7 +26,7 @@ const itemCoordinates = [
 
 const Game: FC<Props> = ({name, surname}) => {
   console.log('render Game')
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   // const [createPlayer, {isLoading, isError}] = useAddPlayerMutation()
   const [createPlayer] = useAddPlayerMutation()
   const {showSnackbar} = useSnackbar();
@@ -146,7 +146,11 @@ const Game: FC<Props> = ({name, surname}) => {
           />
         ))}
       </div>
-      {openFinishModal && <FinishGameModal open={openFinishModal} name={name} surname={surname} score={foundItems.length} timeLeft={remainingTimeRef.current} handleClose={() => navigate('/')}/>}
+      {openFinishModal &&
+        <FinishGameModal open={openFinishModal} name={name} surname={surname} score={foundItems.length}
+                         timeLeft={remainingTimeRef.current} handleClose={() => {
+          console.log('send')
+        }}/>}
     </div>
   )
 }
