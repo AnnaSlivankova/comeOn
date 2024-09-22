@@ -3,7 +3,6 @@ import {useSnackbar} from "../components/snackbar/snackbar-provider.tsx";
 import Timer from "../components/timer.tsx";
 import {useAddPlayerMutation} from "../services/players.service.ts";
 import FinishGameModal from "./FinishGameModal.tsx";
-import {useNavigate} from "react-router-dom";
 import {CONFIG} from "../app-settings.ts";
 
 const originalWidth = 1500 // оригинальная ширина
