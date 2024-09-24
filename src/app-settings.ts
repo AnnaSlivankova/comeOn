@@ -4,3 +4,9 @@ export const CONFIG = {
   GAME_TIME: 20,
   TOTAL_ELEMENTS: 12
 }
+
+export const PATH = {
+  index: '/',
+  players: '/players',
+  not_found: '/404'
+} as const

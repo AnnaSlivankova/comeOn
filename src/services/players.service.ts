@@ -17,19 +17,30 @@ export const playersService = baseApi.injectEndpoints({
         method: 'POST',
         body: player,
       }),
-      invalidatesTags: [{ type: 'Players', id: 'LIST' }],
+      invalidatesTags: [{type: 'Players', id: 'LIST'}],
     }),
-    //
-    // getAuthors: builder.query<any, any>({
-    //   query: () => {
-    //     return {
-    //       method: "GET",
-    //       url: "game",
-    //     };
-    //   },
-    //   providesTags: ['Players'],
-    // }),
-    //
+
+    ping: builder.query<boolean, void>({
+      query: (query: any) => {
+        return {
+          method: "GET",
+          url: "game/ping",
+          query: query
+        }
+      }
+    }),
+
+
+    getTopPlayersList: builder.query<any, any>({
+      query: () => {
+        return {
+          method: "GET",
+          url: "game",
+        };
+      },
+      providesTags: ['Players'],
+    }),
+
     // createPlayer: builder.mutation<any, any>({
     //   query(body) {
     //     return {
@@ -45,6 +56,7 @@ export const playersService = baseApi.injectEndpoints({
 })
 
 export const {
-  // useGetPlayersQuery,
+  useGetTopPlayersListQuery,
   useAddPlayerMutation,
+  usePingQuery
 } = playersService;

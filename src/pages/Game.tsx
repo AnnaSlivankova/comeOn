@@ -3,7 +3,8 @@ import {useSnackbar} from "../components/snackbar/snackbar-provider.tsx";
 import Timer from "../components/timer.tsx";
 import {useAddPlayerMutation} from "../services/players.service.ts";
 import FinishGameModal from "./FinishGameModal.tsx";
-import {CONFIG} from "../app-settings.ts";
+import {CONFIG, PATH} from "../app-settings.ts";
+import {useNavigate} from "react-router-dom";
 
 const originalWidth = 1500 // оригинальная ширина
 const originalHeight = 880 // оригинальная высота
@@ -25,7 +26,7 @@ const itemCoordinates = [
 
 const Game: FC<Props> = ({name, surname}) => {
   console.log('render Game')
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
   // const [createPlayer, {isLoading, isError}] = useAddPlayerMutation()
   const [createPlayer] = useAddPlayerMutation()
   const {showSnackbar} = useSnackbar();
@@ -148,7 +149,7 @@ const Game: FC<Props> = ({name, surname}) => {
       {openFinishModal &&
         <FinishGameModal open={openFinishModal} name={name} surname={surname} score={foundItems.length}
                          timeLeft={remainingTimeRef.current} handleClose={() => {
-          console.log('send')
+          navigate(PATH.players)
         }}/>}
     </div>
   )
