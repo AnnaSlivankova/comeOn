@@ -12,6 +12,7 @@ const PlayersView = () => {
   const test = data as Pagination<Player>
 
   const changePageHandler = (event: ChangeEvent<unknown>, value: number) => {
+    console.log('event', event)
    setPageNumber(value)
  }
 

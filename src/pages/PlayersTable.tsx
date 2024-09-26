@@ -29,7 +29,7 @@ const PlayersTable: FC<Props> = ({items}) => {
               {/*        i + 1*/}
               {/*  }*/}
               {/*</TableCell>*/}
-              <TableCell component="th" scope="row" align="center">{''}</TableCell>
+              <TableCell component="th" scope="row" align="center">{i}</TableCell>
               <TableCell align="left">{`${p.name} ${p.surname}`}</TableCell>
               <TableCell align="center">{p.rating || '🤷🏻‍♀️'}</TableCell>
             </TableRow>
