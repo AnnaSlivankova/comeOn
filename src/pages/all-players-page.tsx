@@ -1,37 +1,23 @@
-import {useGetTopPlayersListQuery} from "../services/players.service.ts";
+import PlayersView from "./PlayersView.tsx";
+import Typography from "@mui/material/Typography";
+import HomeIcon from "@mui/icons-material/Home";
+import {useNavigate} from "react-router-dom";
+import {Button} from "@mui/material";
 
 const AllPlayersPage = () => {
-  const {data, isLoading, isError} = useGetTopPlayersListQuery({})
-  console.log(isLoading)
-  console.log(isError)
+  const navigate = useNavigate()
   return (
     <>
-      {data && data.items.map((p:Player) => <h3 style={{textAlign: 'center'}}
-                                       key={p.id}>{`${p.name} ${p.surname} rating: ${100500}`}</h3>)}
+      <Typography variant="h5" sx={{textAlign: 'center', padding: '20px'}}>
+        Players List
+        <Button sx={{marginLeft:'30px', gap: '10px'}} variant='outlined' onClick={() => navigate('/')}>
+          <HomeIcon/>
+          home
+        </Button>
+      </Typography>
+      <PlayersView/>
     </>
   );
 };
 
 export default AllPlayersPage;
-
-type Player = {
-  id: string;
-  name: string;
-  surname: string;
-  score: number;
-  time: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-// type Pagination<T> = {
-//   pagesCount: number;
-//   page: number;
-//   pageSize: number;
-//   totalCount: number;
-//   items: T[];
-// }
-
-
-
-

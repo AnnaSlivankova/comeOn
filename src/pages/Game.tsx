@@ -1,4 +1,4 @@
-import {useState, useEffect, FC, useRef, memo} from 'react'
+import {useState, useEffect, FC, useRef, memo, MouseEvent} from 'react'
 import {useSnackbar} from "../components/snackbar/snackbar-provider.tsx";
 import Timer from "../components/timer.tsx";
 import {useAddPlayerMutation} from "../services/players.service.ts";
@@ -27,13 +27,11 @@ const itemCoordinates = [
 const Game: FC<Props> = ({name, surname}) => {
   console.log('render Game')
   const navigate = useNavigate()
-  // const [createPlayer, {isLoading, isError}] = useAddPlayerMutation()
-  const [createPlayer] = useAddPlayerMutation()
+  const [createPlayer, {isLoading}] = useAddPlayerMutation()
   const {showSnackbar} = useSnackbar();
   const [startTimer, setStartTimer] = useState<boolean>(true)
 
   const [foundItems, setFoundItems] = useState<number[]>([])
-  const [message, setMessage] = useState<string>('')
   const [scaledCoordinates, setScaledCoordinates] = useState<any[]>([])
   const imgRef = useRef<HTMLImageElement | null>(null)
   const [openFinishModal, setOpenFinishModal] = useState(false)
@@ -82,16 +80,12 @@ const Game: FC<Props> = ({name, surname}) => {
     if (foundItems.length === totalItems) {
       showSnackbar('УРА! Все элементы найдены!', "success")
       setStartTimer(false)
-      setMessage('Поздравляем! Вы нашли все элементы!')
-      // console.log(remainingTimeRef.current.toString())
-      // console.log(remainingTimeRef)
+      createPlayer({name, surname, score: foundItems.length, time: remainingTimeRef.current})
       setOpenFinishModal(true)
-      createPlayer({name, surname, score: foundItems.length, time: remainingTimeRef.current.toString()})
-      console.log(`${name} ${surname} - ${foundItems.length} items`)
     }
   }, [foundItems])
 
-  const handleImageClickCoords = (e: React.MouseEvent<HTMLImageElement>) => {
+  const handleImageClickCoords = (e: MouseEvent<HTMLImageElement>) => {
     const rect = e.currentTarget.getBoundingClientRect()
     const x = e.clientX - rect.left // координата X
     const y = e.clientY - rect.top // координата Y
@@ -108,18 +102,15 @@ const Game: FC<Props> = ({name, surname}) => {
   }
 
   const handleTimeLeft = () => {
-    console.log(`${name} ${surname} - ${foundItems.length} items`)
-    setMessage(`Ты нашел ${foundItems.length}!`)
-    // console.log(remainingTimeRef.current.toString())
+    createPlayer({name, surname, score: foundItems.length, time: remainingTimeRef.current})
     setOpenFinishModal(true)
-    createPlayer({name, surname, score: foundItems.length, time: remainingTimeRef.current.toString()})
   }
 
   return (
     <div style={{textAlign: 'center'}}>
-      <h2>{`${name} ${surname} у тебя осталось ⏱️👇`}</h2>
+      <h2 style={{padding: '14px 0px 0px 0px', margin: "0px"}}>{'найди всех КРОЛИКОВ'}</h2>
+      <h2 style={{padding: '10px 0px 0px 0px', margin: "0px"}}>{`${name} ${surname} у тебя осталось ⏱️👇`}</h2>
       <Timer isActive={startTimer} onTimeLeft={handleTimeLeft} onTick={handleTick}/>
-      {message && <h3>{message}</h3>}
       <div style={{position: 'relative', display: 'inline-block'}}>
         <img
           ref={imgRef}
@@ -147,9 +138,13 @@ const Game: FC<Props> = ({name, surname}) => {
         ))}
       </div>
       {openFinishModal &&
-        <FinishGameModal open={openFinishModal} name={name} surname={surname} score={foundItems.length}
-                         timeLeft={remainingTimeRef.current} handleClose={() => {
-          navigate(PATH.players)
+        <FinishGameModal
+          open={openFinishModal}
+          name={name}
+          surname={surname}
+          score={foundItems.length}
+          isSavingResults={isLoading}
+          timeLeft={remainingTimeRef.current} handleClose={() => {navigate(PATH.players)
         }}/>}
     </div>
   )

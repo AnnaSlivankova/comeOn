@@ -6,6 +6,7 @@ import {usePingQuery} from "../services/players.service.ts";
 export default function GamePage() {
   const {data} = usePingQuery()
   console.log('ping', data)
+
   const [open, setOpen] = useState(true)
   const [name, setName] = useState<null | string>(null)
   const [surname, setSurname] = useState<null | string>(null)

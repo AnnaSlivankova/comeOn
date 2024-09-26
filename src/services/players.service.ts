@@ -1,56 +1,36 @@
 import {baseApi} from "./base-api.ts";
+import {CreatePlayerDto, Pagination, Player, QueryParams} from "./types.ts";
 
-export const playersService = baseApi.injectEndpoints({
+export const playersService = baseApi.injectEndpoints!({
   endpoints: builder => ({
-    // getAllPlayers: builder.query<any[], void>({
-    //   query: () => 'game',
-    //   providesTags: (result) =>
-    //     result ? [...result.map(({id}) => ({type: 'Players', id} as const)), {
-    //       type: 'Players',
-    //       id: 'LIST'
-    //     }] : [{type: 'Players', id: 'LIST'}],
-    // }),
-
-    addPlayer: builder.mutation<any, Partial<any>>({
+    addPlayer: builder.mutation<Player, CreatePlayerDto>({
       query: (player) => ({
         url: 'game',
         method: 'POST',
         body: player,
       }),
-      invalidatesTags: [{type: 'Players', id: 'LIST'}],
+      invalidatesTags: [{type: 'Players'}],
     }),
 
     ping: builder.query<boolean, void>({
-      query: (query: any) => {
+      query: () => {
         return {
           method: "GET",
           url: "game/ping",
-          query: query
         }
       }
     }),
 
-
-    getTopPlayersList: builder.query<any, any>({
-      query: () => {
+    getTopPlayersList: builder.query<Pagination<Player>, Partial<QueryParams>>({
+      query: (params) => {
         return {
           method: "GET",
           url: "game",
+          params
         };
       },
       providesTags: ['Players'],
     }),
-
-    // createPlayer: builder.mutation<any, any>({
-    //   query(body) {
-    //     return {
-    //       url: `game`,
-    //       method: 'POST',
-    //       body,
-    //     }
-    //   },
-    //   invalidatesTags: ['Players'],
-    // }),
 
   })
 })

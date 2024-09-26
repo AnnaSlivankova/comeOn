@@ -6,7 +6,7 @@ import {baseApi} from "./base-api.ts";
 
 export const store: any = configureStore({
   reducer: {
-    [baseApi.reducerPath]: baseApi.reducer
+    [baseApi.reducerPath]: baseApi.reducer!
   },
 
   middleware: getDefaultMiddleware => getDefaultMiddleware()

@@ -2,9 +2,7 @@ import {FC, useEffect, useState} from 'react';
 import {CONFIG} from "../app-settings.ts";
 
 const Timer: FC<Props> = ({isActive, onTimeLeft, onTick}) => {
-  // const [timeLeft, setTimeLeft] = useState(300); // 5 минут в секундах
   const [timeLeft, setTimeLeft] = useState(CONFIG.GAME_TIME);
-  // const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     let timer: number;
@@ -29,12 +27,9 @@ const Timer: FC<Props> = ({isActive, onTimeLeft, onTick}) => {
   const seconds = timeLeft % 60;
 
   return (
-    <>
       <h2>
         {String(minutes).padStart(2, '0')} : {String(seconds).padStart(2, '0')}
       </h2>
-      {timeLeft === 0 && <p>Время вышло!</p>}
-    </>
   );
 };
 
