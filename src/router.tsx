@@ -1,4 +1,4 @@
-import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
+import {createBrowserRouter, Navigate, Outlet, RouterProvider} from "react-router-dom";
 import {PATH} from "./app-settings.ts";
 import {AppBar, Toolbar} from "@mui/material";
 import Typography from "@mui/material/Typography";
@@ -27,9 +27,10 @@ const AppLayout = () => {
 
 const router = createBrowserRouter([
   {
+    path: PATH.index,
     element: <AppLayout/>,
-    // errorElement: <Navigate to={PATH.not_found}/>,
-    errorElement: <NotFoundPage/>,
+    errorElement: <Navigate to={PATH.not_found}/>,
+    // errorElement: <NotFoundPage/>,
     children: [
       {
         path: PATH.index,
@@ -37,13 +38,12 @@ const router = createBrowserRouter([
       },
       {
         path: PATH.players,
-        // element: <h3 style={{textAlign: 'center'}}>top users</h3>,
         element: <AllPlayersPage/>,
       },
-      // {
-      //   path: PATH.not_found,
-      //   element: <NotFoundPage/>,
-      // },
+      {
+        path: PATH.not_found,
+        element: <NotFoundPage/>,
+      },
     ],
   },
 ])
