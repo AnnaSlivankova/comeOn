@@ -1,7 +1,7 @@
 import {forwardRef, memo, Ref, SVGProps} from 'react'
 import {PATH} from "../../app-settings.ts";
 import {useNavigate} from "react-router-dom";
-import s from './notFound.module.scss'
+import s from './nof-found.module.css'
 
 const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => {
   const navigate = useNavigate();
