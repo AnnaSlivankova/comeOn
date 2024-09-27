@@ -27,6 +27,7 @@ const AppLayout = () => {
 
 const router = createBrowserRouter([
   {
+    path: PATH.index,
     element: <AppLayout/>,
     // errorElement: <Navigate to={PATH.not_found}/>,
     errorElement: <NotFoundPage/>,
