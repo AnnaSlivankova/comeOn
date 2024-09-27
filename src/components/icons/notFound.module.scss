@@ -1,0 +1,9 @@
+.btn {
+  fill: #ff725e;
+  cursor: pointer;
+  transition: fill 0.3s;
+
+  &:hover {
+    fill: #455a64;
+  }
+}

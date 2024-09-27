@@ -27,13 +27,12 @@ const AppLayout = () => {
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: PATH.index,
     element: <AppLayout/>,
     errorElement: <Navigate to={PATH.not_found}/>,
-    // errorElement: <NotFoundPage/>,
     children: [
       {
-        path: PATH.game,
+        path: PATH.index,
         element: <GamePage/>,
       },
       {
