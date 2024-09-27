@@ -7,7 +7,7 @@ export const CONFIG = {
 }
 
 export const PATH = {
-  index: '/',
+  game: '/game',
   players: '/players',
   not_found: '/404'
 } as const
