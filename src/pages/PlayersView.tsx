@@ -10,7 +10,6 @@ const PlayersView = () => {
   const {data, isLoading, isError} = useGetTopPlayersListQuery({pageNumber})
   console.log(isError)
   const test = data as Pagination<Player>
-
   const changePageHandler = (event: ChangeEvent<unknown>, value: number) => {
     console.log('event', event)
    setPageNumber(value)
@@ -35,9 +34,9 @@ const PlayersView = () => {
   return (
     <>
       {data && (
-        <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: '20px'}}>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap: '20px', marginTop:'20px'}}>
           <PlayersTable items={test.items}/>
-          <TablePagination count={test && test.pagesCount || 15} color="primary" onChange={changePageHandler} page={pageNumber}/>
+          <TablePagination count={test && test.pagesCount || 1} color="primary" onChange={changePageHandler} page={pageNumber}/>
         </div>
       )}
     </>

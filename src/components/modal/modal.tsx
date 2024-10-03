@@ -18,9 +18,18 @@ function BasicModal({open, handleClose, children}: { open: boolean, handleClose?
           justifyContent: 'center',
         }}
       >
-        <>
+        <Box
+          sx={{
+            maxHeight: '80vh', // Ограничение по высоте
+            overflowY: 'auto',  // Прокрутка по вертикали
+            backgroundColor: 'background.paper', // Фон модального окна
+            padding: 2,
+            boxShadow: 24,
+            borderRadius: 1,
+          }}
+        >
           {children}
-        </>
+        </Box>
       </Modal>
     </Box>
   );

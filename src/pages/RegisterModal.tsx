@@ -6,7 +6,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import BasicModal from "../components/modal/modal.tsx";
 import FormProvider, {ContTextField} from "../components/hook-form";
 import Grid from "@mui/material/Grid2";
-import {Button, Card, Stack} from "@mui/material";
+import {Button, Stack} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import {PATH} from "../app-settings.ts";
@@ -14,8 +14,8 @@ import {useNavigate} from "react-router-dom";
 
 const schema = Yup
   .object({
-    name: Yup.string().required('Введи своё имя!').min(2).max(10).matches(/^[А-Яа-яЁё\s]+$/, {message: 'Используй кириллицу, без спецсимволов!'}),
-    surname: Yup.string().required('Введи свою фамилию!').min(1).max(15).matches(/^[А-Яа-яЁё\s]+$/, {message: 'Используй кириллицу, без спецсимволов!'}),
+    name: Yup.string().required('Введи своё имя!').min(2, 'Минимум 2 символа!').max(10, 'Максимум 10 символов!').matches(/^[А-Яа-яЁё\s]+$/, {message: 'Используй кириллицу, без спецсимволов!'}),
+    surname: Yup.string().required('Введи свою фамилию!').min(1, 'Минимум 1 символ!').max(15, 'Максимум 15 символов!').matches(/^[А-Яа-яЁё\s]+$/, {message: 'Используй кириллицу, без спецсимволов!'}),
   })
   .required('Заполните поле!')
 
@@ -45,16 +45,14 @@ function RegisterModal({open, handleClose}: Props) {
     <BasicModal open={open}>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Grid container spacing={2}>
-          <Card sx={{width: '90%', maxWidth: 400, p: 2}}>
+          <Box sx={{maxWidth: 400}}>
             <Typography id="modal-modal-title" variant="h6" component="h2" sx={{textAlign: 'center'}}>
               Найди все элементы 🔎🎁
             </Typography>
             <Typography id="modal-modal-description" sx={{mt: 2, textAlign: 'center'}}>
               ЗАДАНИЕ: Найти как можно больше спрятанных элементов на картинке. Нашел то, что ищешь, тапай на это
-              скорее. Для того чтобы начать игру, тебе необходимо
-              ввести в поля ниже своё ИМЯ и ФАМИЛИЮ (на русском языке ☝🏻), а потом нажать кнопку ИГРАТЬ. На поиски
-              дается всего 30 секунд. Кто
-              найдет больше всех элементов (максимально 12), получит приз. Торопись и удачи в поиске!
+              скорее. Чтобы начать игру, тебе необходимо ввести в поля ниже своё ИМЯ и ФАМИЛИЮ (на русском языке ☝🏻) и затем нажать кнопку ИГРАТЬ. Кто
+              найдет больше всех элементов (максимум 12), получит приз 🎁 в эту субботу на СomeONe. На поиски дается всего 30 секунд⏱️, а за скорость начисляются дополнительные баллы. Торопись и удачи в поиске!
             </Typography>
             <Stack spacing={3} sx={{p: 3}}>
               <Box
@@ -78,7 +76,7 @@ function RegisterModal({open, handleClose}: Props) {
                 </Button>
               </Box>
             </Stack>
-          </Card>
+          </Box>
         </Grid>
       </FormProvider>
     </BasicModal>
