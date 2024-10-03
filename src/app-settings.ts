@@ -2,7 +2,7 @@
 export const API_URL = import.meta.env.MODE === 'production' ? import.meta.env.VITE_VERCEL_API_URL : import.meta.env.VITE_VERCEL_TESTING_API_URL
 
 export const CONFIG = {
-  GAME_TIME: 20,
+  GAME_TIME: 30,
   TOTAL_ELEMENTS: 12
 }
 
