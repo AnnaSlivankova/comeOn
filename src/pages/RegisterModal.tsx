@@ -14,8 +14,8 @@ import {useNavigate} from "react-router-dom";
 
 const schema = Yup
   .object({
-    name: Yup.string().required('Введи своё имя!').matches(/^[А-Яа-яЁё\s]+$/, {message: 'Используй кириллицу, без спецсимволов!'}),
-    surname: Yup.string().required('Введи свою фамилию!').matches(/^[А-Яа-яЁё\s]+$/, {message: 'Используй кириллицу, без спецсимволов!'}),
+    name: Yup.string().required('Введи своё имя!').min(2).max(10).matches(/^[А-Яа-яЁё\s]+$/, {message: 'Используй кириллицу, без спецсимволов!'}),
+    surname: Yup.string().required('Введи свою фамилию!').min(1).max(15).matches(/^[А-Яа-яЁё\s]+$/, {message: 'Используй кириллицу, без спецсимволов!'}),
   })
   .required('Заполните поле!')
 
