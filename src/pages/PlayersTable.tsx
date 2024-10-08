@@ -23,6 +23,7 @@ const PlayersTable: FC<Props> = ({items}) => {
 
   // Преобразуем объект обратно в массив
   const result = Object.values(aggregatedPlayers);
+  result.sort((a, b) => b.rating - a.rating);
 
 // Вывод результата
   console.log(result);
