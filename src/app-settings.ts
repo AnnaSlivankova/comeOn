@@ -2,12 +2,15 @@
 export const API_URL = import.meta.env.MODE === 'production' ? import.meta.env.VITE_VERCEL_API_URL : import.meta.env.VITE_VERCEL_TESTING_API_URL
 
 export const CONFIG = {
-  GAME_TIME: 30,
-  TOTAL_ELEMENTS: 12
+  GAME_TIME: 40,
+  TOTAL_ELEMENTS: 14
 }
 
 export const PATH = {
   index: '/',
+  game: '/game',
   players: '/players',
-  not_found: '/404'
+  users: '/users',
+  not_found: '/404',
+  login: '/login'
 } as const

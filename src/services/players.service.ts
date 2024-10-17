@@ -1,5 +1,5 @@
 import {baseApi} from "./base-api.ts";
-import {CreatePlayerDto, Pagination, Player, QueryParams} from "./types.ts";
+import {CreatePlayerDto, Pagination, Player, QueryParams, UpdatePlayerDto} from "./types.ts";
 
 export const playersService = baseApi.injectEndpoints!({
   endpoints: builder => ({
@@ -8,6 +8,15 @@ export const playersService = baseApi.injectEndpoints!({
         url: 'game',
         method: 'POST',
         body: player,
+      }),
+      invalidatesTags: [{type: 'Players'}],
+    }),
+
+    updatePlayer: builder.mutation<Player, { id: string, data: UpdatePlayerDto }>({
+      query: (data) => ({
+        url: `game/${data.id}`,
+        method: 'POST',
+        body: data.data,
       }),
       invalidatesTags: [{type: 'Players'}],
     }),
@@ -38,5 +47,5 @@ export const playersService = baseApi.injectEndpoints!({
 export const {
   useGetTopPlayersListQuery,
   useAddPlayerMutation,
-  usePingQuery
+  useUpdatePlayerMutation
 } = playersService;
