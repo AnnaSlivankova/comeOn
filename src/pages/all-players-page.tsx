@@ -9,7 +9,8 @@ import {EmojiEvents} from "@mui/icons-material";
 import {PATH} from "../app-settings.ts";
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 
-const positionIcons = {
+type PositionKey = 0 | 1 | 2;
+const positionIcons: Record<PositionKey, JSX.Element> = {
   0: <EmojiEvents sx={{color: 'gold'}}/>,
   1: <EmojiEvents sx={{color: 'silver'}}/>,
   2: <EmojiEvents sx={{color: '#cd7f32'}}/>
@@ -33,7 +34,7 @@ const AllPlayersPage = () => {
           {!isLoading && mockTopUsers.items.map((u, i) => {
             return (
               <Box key={u.id} sx={{display: 'flex', gap: 1}}>
-                {positionIcons[i.toString()] || <div>{u.position + 1}</div>}
+                {positionIcons[i as PositionKey] || <div>{u.position + 1}</div>}
                 <Typography variant='body2'>{u.name}</Typography>
                 <Typography variant='body2'>{u.surname}</Typography>
                 <Typography variant='body2'>{u.rating}</Typography>
