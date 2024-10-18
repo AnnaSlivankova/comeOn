@@ -52,8 +52,20 @@ export const LoginPage = () => {
     }
 
     const res = await login(newData)
+    // if (res.error) {
+    //   res.error.status === 401 ? showSnackbar('Похоже ты ввел некорректные данные 🧐', "error") : showSnackbar('Что-то сломалось 🤷🏻‍♀️', "error")
+    // }
+
     if (res.error) {
-      res.error.status === 401 ? showSnackbar('Похоже ты ввел некорректные данные 🧐', "error") : showSnackbar('Что-то сломалось 🤷🏻‍♀️', "error")
+      if ('status' in res.error) { // Проверка на статус
+        if (res.error.status === 401) {
+          showSnackbar('Похоже ты ввел некорректные данные 🧐', "error");
+        } else {
+          showSnackbar('Что-то сломалось 🤷🏻‍♀️', "error");
+        }
+      } else {
+        showSnackbar('Что-то сломалось 🤷🏻‍♀️', "error"); // Обработка SerializedError
+      }
     }
 
     const token = res.data!.accessToken;

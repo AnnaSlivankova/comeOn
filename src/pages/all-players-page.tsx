@@ -33,7 +33,7 @@ const AllPlayersPage = () => {
           {!isLoading && mockTopUsers.items.map((u, i) => {
             return (
               <Box key={u.id} sx={{display: 'flex', gap: 1}}>
-                {positionIcons[i] || <div>{u.position + 1}</div>}
+                {positionIcons[i.toString()] || <div>{u.position + 1}</div>}
                 <Typography variant='body2'>{u.name}</Typography>
                 <Typography variant='body2'>{u.surname}</Typography>
                 <Typography variant='body2'>{u.rating}</Typography>

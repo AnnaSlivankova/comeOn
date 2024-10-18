@@ -27,7 +27,7 @@ const UsersTable: FC<Props> = ({items}) => {
                   {p.position === 1 ? <EmojiEvents sx={{color: 'gold'}}/> :
                     p.position === 2 ? <EmojiEvents sx={{color: 'silver'}}/> :
                       p.position === 3 ? <EmojiEvents sx={{color: '#cd7f32'}}/> :
-                        p.position
+                        p.position === 0 ? '' : p.position
                   }
                 </TableCell>
 

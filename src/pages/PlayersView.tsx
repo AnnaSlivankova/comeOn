@@ -8,8 +8,7 @@ import Box from "@mui/material/Box";
 
 const PlayersView = () => {
   // const [pageNumber, setPageNumber] = useState<number>(1)
-  const {data, isLoading, isError} = useGetTopPlayersListQuery({pageNumber: 1})
-  console.log(isError)
+  const {data, isLoading} = useGetTopPlayersListQuery({pageSize:100})
   const test = data as Pagination<Player>
   //  const changePageHandler = (event: ChangeEvent<unknown>, value: number) => {
   //    console.log('event', event)
