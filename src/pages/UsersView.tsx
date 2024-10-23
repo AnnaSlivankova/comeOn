@@ -9,7 +9,7 @@ import {memo} from "react";
 
 const UsersView = () => {
   // const [pageNumber, setPageNumber] = useState<number>(1)
-  const {data, isLoading, isError} = useGetUsersListQuery({})
+  const {data, isLoading, isError} = useGetUsersListQuery({pageSize:100})
   console.log(isError)
   const test = data as Pagination<User>
   //  const changePageHandler = (event: ChangeEvent<unknown>, value: number) => {
