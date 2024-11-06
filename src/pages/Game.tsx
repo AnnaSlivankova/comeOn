@@ -5,7 +5,7 @@ import {useUpdatePlayerMutation} from "../services/players.service.ts";
 import FinishGameModal from "./FinishGameModal.tsx";
 import {CONFIG, PATH} from "../app-settings.ts";
 import {useNavigate} from "react-router-dom";
-import gameImage from '../assets/game-images/game2.jpg';
+import gameImage from '../assets/game-images/game3.jpg';
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import {Stack} from "@mui/material";
@@ -29,20 +29,15 @@ img.src = gameImage as string
 const totalItems = CONFIG.TOTAL_ELEMENTS
 
 const itemCoordinates = [
-  {x: 247, y: 426, radius: 66, title: "rabbit"},
-  {x: 452, y: 66, radius: 52, title: "cloud"},
-  {x: 631, y: 617, radius: 41, title: "worm"},
-  {x: 698, y: 73, radius: 37, title: "bird"},
-  {x: 270, y: 313, radius: 37, title: "mashroom"},
-  {x: 737, y: 371, radius: 53, title: "flower"},
-  {x: 417, y: 652, radius: 45, title: "snail"},
-  {x: 421, y: 427, radius: 33, title: "pencil"},
-  {x: 252, y: 611, radius: 48, title: "mouse"},
-  {x: 613, y: 299, radius: 24, title: "ladybug"},
-  {x: 702, y: 249, radius: 37, title: "dog"},
-  {x: 545, y: 114, radius: 45, title: "butterfly"},
-  {x: 543, y: 489, radius: 26, title: "worm2"},
-  {x: 726, y: 492, radius: 52, title: "shovel"},
+  {x: 915, y: 600, radius: 39, title: "showel"},
+  {x: 63, y: 794, radius: 53, title: "bucket"},
+  {x: 100, y: 589, radius: 46, title: "ladder"},
+  {x: 732, y: 286, radius: 44, title: "hat"},
+  {x: 603, y: 1066, radius: 33, title: "shuttlecock"},
+  {x: 997, y: 153, radius: 35, title: "glasses"},
+  {x: 383, y: 466, radius: 45, title: "bag"},
+  {x: 1033, y: 897, radius: 36, title: "pencil"},
+  {x: 1364, y: 733, radius: 56, title: "bailer"},
 ];
 
 const Game: FC<Props> = ({isTimerStart, playerId}) => {
