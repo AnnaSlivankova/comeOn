@@ -4,7 +4,7 @@ import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow}
 import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
 import {EmojiEvents} from "@mui/icons-material";
 
-const PlayersTable: FC<Props> = ({items}) => {
+const PlayersTable: FC<Props> = ({items=[]}) => {
   return (
     <TableContainer component={Paper} sx={{maxWidth: 650}}>
       <Table aria-label="simple table">
