@@ -24,12 +24,12 @@ const AllUsersPage = () => {
           labels={['Дни', 'Часы', 'Минуты', 'Секунды']}
           labelStyle={{fontSize: 10, fontWeight: 500, textTransform: 'uppercase'}}
           digitBlockStyle={{width: 25, height: 30, fontSize: 25}}
-          style={{
-            '--fcc-background': '#9C27B0' as string,
-            '--fcc-digit-color': '#ffff' as string,
-            '--fcc-separator-color': '#9C27B0' as string,
-            '--fcc-label-color': '#1F76D2' as string,
-          }}
+          // style={{
+          //   '--fcc-background': '#9C27B0' as string,
+          //   '--fcc-digit-color': '#ffff' as string,
+          //   '--fcc-separator-color': '#9C27B0' as string,
+          //   '--fcc-label-color': '#1F76D2' as string,
+          // }}
         >Квиз начался 🎉</FlipClockCountdown>
         <Typography variant="h5">Users List</Typography>
         <Button variant='outlined' onClick={() => navigate('/')} color='secondary'><SportsEsportsIcon/>играть</Button>

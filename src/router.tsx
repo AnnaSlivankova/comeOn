@@ -22,10 +22,10 @@ const privateRoutes: RouteObject[] = [
   //   path: PATH.index,
   //   element: <QuizPage/>,
   // },
-  {
-    path: PATH.quiz,
-    element: <QuizPage/>,
-  }
+  // {
+  //   path: PATH.quiz,
+  //   element: <QuizPage/>,
+  // }
 ]
 
 const AppLayout = () => {
