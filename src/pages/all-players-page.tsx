@@ -35,12 +35,12 @@ const AllPlayersPage = () => {
           labels={['Дни', 'Часы', 'Минуты', 'Секунды']}
           labelStyle={{fontSize: 10, fontWeight: 500, textTransform: 'uppercase'}}
           digitBlockStyle={{width: 25, height: 30, fontSize: 25}}
-          style={{
-            '--fcc-background': '#9C27B0' as any,
-            '--fcc-digit-color': '#ffff' as any,
-            '--fcc-separator-color': '#9C27B0' as any,
-            '--fcc-label-color': '#1F76D2' as any,
-          }}
+          // style={{
+          //   '--fcc-background': '#9C27B0' as any,
+          //   '--fcc-digit-color': '#ffff' as any,
+          //   '--fcc-separator-color': '#9C27B0' as any,
+          //   '--fcc-label-color': '#1F76D2' as any,
+          // }}
         >Квиз начался 🎉</FlipClockCountdown>
         <Typography variant="h5" >Статистика текущей игры</Typography>
         <Button variant='outlined' onClick={() => navigate('/')} color='secondary'><SportsEsportsIcon/>играть</Button>
