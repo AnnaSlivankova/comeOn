@@ -11,7 +11,7 @@ import Box from "@mui/material/Box";
 import {useSnackbar} from "./components/snackbar/snackbar-provider.tsx";
 import AllUsersPage from "./pages/all-users-page.tsx";
 import {Snowfall} from "./components/snowfall";
-import {QuizPage} from "./pages/quiz";
+// import {QuizPage} from "./pages/quiz";
 
 const privateRoutes: RouteObject[] = [
   {
