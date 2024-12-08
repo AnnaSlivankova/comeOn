@@ -10,12 +10,22 @@ import {useLogoutMutation, useMeQuery} from "./services/auth.service.ts";
 import Box from "@mui/material/Box";
 import {useSnackbar} from "./components/snackbar/snackbar-provider.tsx";
 import AllUsersPage from "./pages/all-users-page.tsx";
+import {Snowfall} from "./components/snowfall";
+// import {QuizPage} from "./pages/quiz";
 
 const privateRoutes: RouteObject[] = [
   {
     path: PATH.index,
     element: <GamePage/>,
-  }
+  },
+  // {
+  //   path: PATH.index,
+  //   element: <QuizPage/>,
+  // },
+  // {
+  //   path: PATH.quiz,
+  //   element: <QuizPage/>,
+  // }
 ]
 
 const AppLayout = () => {
@@ -34,13 +44,14 @@ const AppLayout = () => {
 
   return (
     <>
+      <Snowfall/>
       <AppBar position="sticky">
         <Toolbar>
           {/*<Button color="error" variant="contained" onClick={() => navigate(PATH.index)}>home</Button>*/}
           <Typography variant="h6" component="div" sx={{flexGrow: 1, textAlign: 'center'}}>
             ComeON
           </Typography>
-          <Button color="warning" variant="contained" onClick={() => navigate(PATH.login)} sx={{mr:1}}>login</Button>
+          <Button color="warning" variant="contained" onClick={() => navigate(PATH.login)} sx={{mr: 1}}>login</Button>
           <Button color="secondary" onClick={logoutHandler} variant="contained">logout</Button>
           {/*<Button color="secondary" onClick={() => navigate('/')} variant="contained">Играть</Button>*/}
         </Toolbar>

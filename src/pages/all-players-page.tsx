@@ -8,6 +8,8 @@ import {Pagination, User} from "../services/types.ts";
 import {EmojiEvents} from "@mui/icons-material";
 import {PATH} from "../app-settings.ts";
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import FlipClockCountdown from '@leenguyen/react-flip-clock-countdown';
+import '@leenguyen/react-flip-clock-countdown/dist/index.css';
 
 type PositionKey = 0 | 1 | 2;
 const positionIcons: Record<PositionKey, JSX.Element> = {
@@ -20,10 +22,26 @@ const AllPlayersPage = () => {
   const navigate = useNavigate()
   const {data, isLoading} = useGetUsersListQuery({pageSize: 3})
   const mockTopUsers = data as Pagination<User>
+  const targetDate = new Date('2024-12-11T10:00:00+03:00');
+
 
   return (
     <>
       <Stack alignItems='center' justifyContent='center' spacing={2} sx={{mt:2}}>
+        <Typography variant="h6" >До старта квиза осталось 👇🏻</Typography>
+        <FlipClockCountdown
+          to={targetDate.getTime()}
+          // to={new Date(Date.now() + 5000).getTime()}
+          labels={['Дни', 'Часы', 'Минуты', 'Секунды']}
+          labelStyle={{fontSize: 10, fontWeight: 500, textTransform: 'uppercase'}}
+          digitBlockStyle={{width: 25, height: 30, fontSize: 25}}
+          // style={{
+          //   '--fcc-background': '#9C27B0' as any,
+          //   '--fcc-digit-color': '#ffff' as any,
+          //   '--fcc-separator-color': '#9C27B0' as any,
+          //   '--fcc-label-color': '#1F76D2' as any,
+          // }}
+        >Квиз начался 🎉</FlipClockCountdown>
         <Typography variant="h5" >Статистика текущей игры</Typography>
         <Button variant='outlined' onClick={() => navigate('/')} color='secondary'><SportsEsportsIcon/>играть</Button>
       </Stack>
