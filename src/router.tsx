@@ -43,9 +43,9 @@ const AppLayout = () => {
   console.log(isError)
   // if (isError) return <div>Ошибка загрузки данных useGetQuizInfoQuery</div>;
 
-
-  const quizInfo = data as QuizInfo
-  const targetDate = new Date(quizInfo.targetDate);
+  // const quizInfo = data as QuizInfo
+  // const targetDate = new Date(quizInfo.targetDate);
+  const targetDate = new Date('2024-12-12T18:00:00+03:00');
 
   const logoutHandler = async () => {
     const res = await logout()
