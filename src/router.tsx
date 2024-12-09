@@ -64,20 +64,23 @@ const AppLayout = () => {
           <Typography variant="h6" component="div" sx={{flexGrow: 1, textAlign: 'center'}}>ComeON
           </Typography>
           <Typography variant="body2" >До конца текущего круга осталось 👇🏻</Typography>
-          <FlipClockCountdown
-            to={targetDate.getTime()}
-            labels={['Дни', 'Часы', 'Минуты', 'Секунды']}
-            labelStyle={{fontSize: 10, fontWeight: 500, textTransform: 'uppercase'}}
-            digitBlockStyle={{width: 25, height: 30, fontSize: 25}}
-            style={{
-              // '--fcc-background': '#9C27B0' as any,
-              // '--fcc-digit-color': '#ffff' as any,
-              // '--fcc-separator-color': '#9C27B0' as any,
-              // // '--fcc-label-color': '#1F76D2' as any,
-              // '--fcc-label-color': '#ffff' as any,
-              padding: '10px'
-            }}
-          >Круг завершен!</FlipClockCountdown>
+          {data && (
+            <FlipClockCountdown
+              to={targetDate.getTime()}
+              labels={['Дни', 'Часы', 'Минуты', 'Секунды']}
+              labelStyle={{fontSize: 10, fontWeight: 500, textTransform: 'uppercase'}}
+              digitBlockStyle={{width: 25, height: 30, fontSize: 25}}
+              style={{
+                // '--fcc-background': '#9C27B0' as any,
+                // '--fcc-digit-color': '#ffff' as any,
+                // '--fcc-separator-color': '#9C27B0' as any,
+                // // '--fcc-label-color': '#1F76D2' as any,
+                // '--fcc-label-color': '#ffff' as any,
+                padding: '10px'
+              }}
+            >Круг завершен!</FlipClockCountdown>
+          )}
+
           
           {/*<Button color="error" variant="contained" onClick={() => navigate(PATH.index)}>home</Button>*/}
           <div >
