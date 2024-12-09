@@ -21,7 +21,7 @@ const AllPlayersPage = () => {
   const navigate = useNavigate()
   const {data, isLoading} = useGetUsersListQuery({pageSize: 3})
   const mockTopUsers = data as Pagination<User>
-  const {data: raData, isLoading: isAnswersLoading} = useGetRightAnswersQuery({})
+  const {data: raData, isLoading: isAnswersLoading} = useGetRightAnswersQuery()
   if (isAnswersLoading) {
     return <CircularProgress/>
   }

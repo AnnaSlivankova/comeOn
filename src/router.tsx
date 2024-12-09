@@ -37,7 +37,7 @@ const AppLayout = () => {
   const navigate = useNavigate()
   const {showSnackbar} = useSnackbar();
   const [logout] = useLogoutMutation()
-  const {data, isLoading, isError} = useGetQuizInfoQuery({})
+  const {data, isLoading, isError} = useGetQuizInfoQuery()
   if (isLoading) return <CircularProgress/>;
   if (isError) return <div>Ошибка загрузки данных</div>;
 

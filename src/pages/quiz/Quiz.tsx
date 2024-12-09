@@ -27,12 +27,12 @@ export const Quiz = () => {
   const {showSnackbar} = useSnackbar();
   const navigate = useNavigate()
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const {data} = useGetQuestionsQuery({})
+  const {data} = useGetQuestionsQuery()
   const questions = data as Question[]
   const {currentData} = useMeQuery()
   const userId = currentData?.id || 'no'
   const [createAnswer] = useCreateAnswerMutation()
-  const {data: dataQuiz, isLoading: isInfoLoading} = useGetQuizInfoQuery({})
+  const {data: dataQuiz, isLoading: isInfoLoading} = useGetQuizInfoQuery()
   if(isInfoLoading) {
     return <CircularProgress/>
   }

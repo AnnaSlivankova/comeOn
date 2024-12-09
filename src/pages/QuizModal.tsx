@@ -12,7 +12,7 @@ import {QuizInfo} from "../services/types.ts";
 
 function QuizModal({open, handleClose}: Props) {
   const navigate = useNavigate()
-  const {data, isLoading} = useGetQuizInfoQuery({})
+  const {data, isLoading} = useGetQuizInfoQuery()
   if(isLoading) {
     return <CircularProgress/>
   }
