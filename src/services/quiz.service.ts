@@ -3,26 +3,7 @@ import {Answer, Question, QuizInfo, RightAnswers} from "./types.ts";
 
 export const quizService = baseApi.injectEndpoints!({
   endpoints: builder => ({
-    //   addPlayer: builder.mutation<Player, CreatePlayerDto>({
-    //     query: (player) => ({
-    //       url: 'game',
-    //       method: 'POST',
-    //       body: player,
-    //     }),
-    //     invalidatesTags: [{type: 'Players'}],
-    //   }),
-    //
-    //   updatePlayer: builder.mutation<Player, { id: string, data: UpdatePlayerDto }>({
-    //     query: (data) => ({
-    //       url: `game/${data.id}`,
-    //       method: 'POST',
-    //       body: data.data,
-    //     }),
-    //     invalidatesTags: [{type: 'Players'}],
-    //   }),
-
-
-    getQuestions: builder.query<Question[]>({
+    getQuestions: builder.query<Question[], void>({
       query: () => {
         return {
           method: "GET",
@@ -32,7 +13,7 @@ export const quizService = baseApi.injectEndpoints!({
       providesTags: ['Questions'],
     }),
 
-    getQuizInfo: builder.query<QuizInfo>({
+    getQuizInfo: builder.query<QuizInfo, void>({
       query: () => {
         return {
           method: "GET",
@@ -42,7 +23,7 @@ export const quizService = baseApi.injectEndpoints!({
       providesTags: ['QuizInfo'],
     }),
 
-    getRightAnswers: builder.query<RightAnswers[]>({
+    getRightAnswers: builder.query<RightAnswers[], void>({
       query: () => {
         return {
           method: "GET",
@@ -58,7 +39,6 @@ export const quizService = baseApi.injectEndpoints!({
           method: 'POST',
           body: answer,
         }),
-        // invalidatesTags: [{type: 'Players'}],
       }),
 
   })

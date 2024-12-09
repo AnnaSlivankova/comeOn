@@ -12,7 +12,6 @@ import {useState} from "react";
 import {useMeQuery} from "../../services/auth.service.ts";
 import {PATH} from "../../app-settings.ts";
 import BarChartIcon from "@mui/icons-material/BarChart";
-import s from './Quiz.module.scss'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
@@ -32,7 +31,7 @@ export const Quiz = () => {
   const questions = data as Question[]
   const {currentData} = useMeQuery()
   const userId = currentData?.id || 'no'
-  const [createAnswer, {isLoading, isError}] = useCreateAnswerMutation()
+  const [createAnswer] = useCreateAnswerMutation()
   const {data: dataQuiz, isLoading: isInfoLoading} = useGetQuizInfoQuery({})
   if(isInfoLoading) {
     return <CircularProgress/>
@@ -94,7 +93,7 @@ export const Quiz = () => {
                       variant="h6">{`Вопрос ${questions[currentQuestionIndex].position} из ${questions.length}:`}</Typography>
                     <Typography variant="body1">{questions[currentQuestionIndex].question}</Typography>
                     <ContTextField name='answer' label="Твой ответ"/>
-                    <div className={s.btnContainer}>
+                    <div  style={{display:'flex', justifyContent: 'space-between' }}>
                       <Button type="submit" variant="contained" color='success'>
                         Ответить
                       </Button>
