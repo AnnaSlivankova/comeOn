@@ -38,9 +38,10 @@ const AppLayout = () => {
   const {showSnackbar} = useSnackbar();
   const [logout] = useLogoutMutation()
   const {data, isLoading, isError} = useGetQuizInfoQuery()
-  if (isLoading) return <CircularProgress/>;
+  // if (isLoading) return <CircularProgress/>;
   console.log(data as QuizInfo)
   console.log(isError)
+  console.log(isLoading)
   // if (isError) return <div>Ошибка загрузки данных useGetQuizInfoQuery</div>;
 
   // const quizInfo = data as QuizInfo
