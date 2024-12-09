@@ -39,7 +39,7 @@ const AppLayout = () => {
   const [logout] = useLogoutMutation()
   const {data, isLoading, isError} = useGetQuizInfoQuery()
   if (isLoading) return <CircularProgress/>;
-  console.log(data)
+  console.log(data as QuizInfo)
   console.log(isError)
   // if (isError) return <div>Ошибка загрузки данных useGetQuizInfoQuery</div>;
 
