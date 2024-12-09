@@ -1,6 +1,6 @@
 import {createBrowserRouter, Navigate, Outlet, RouteObject, RouterProvider, useNavigate} from "react-router-dom";
 import {PATH} from "./app-settings.ts";
-import {AppBar, Button, CircularProgress, LinearProgress, Toolbar} from "@mui/material";
+import {AppBar, Button, LinearProgress, Toolbar} from "@mui/material";
 import Typography from "@mui/material/Typography";
 // import GamePage from "./pages/game-page.tsx";
 import AllPlayersPage from "./pages/all-players-page.tsx";
