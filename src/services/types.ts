@@ -48,6 +48,29 @@ export type User = {
   updatedAt: string
 }
 
+//QUIZ
+export type Question = {
+  id: string;
+  question: string;
+  day: number;
+  position: number;
+  createdAt: string;
+  updatedAt: string;
+}
+export type Answer = {
+  userId: string;
+  questionId: string;
+  answer: string;
+}
+export type QuizInfo = {
+  targetDate: string;
+  bibleText: string;
+}
+export type RightAnswers = {
+  question: string;
+  answer: string;
+  position: string;
+}
 
 //COMMON
 export type Pagination<T> = {

@@ -16,5 +16,5 @@ export const baseApi = createApi({
   }),
   endpoints: () => ({}),
   reducerPath: 'baseApi',
-  tagTypes: ['Players', 'Auth', 'Users'],
+  tagTypes: ['Players', 'Auth', 'Users', 'Questions', 'QuizInfo', 'RightAnswers'],
 })
