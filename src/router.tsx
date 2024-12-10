@@ -27,10 +27,10 @@ const privateRoutes: RouteObject[] = [
     path: PATH.index,
     element: <QuizPage/>,
   },
-  {
-    path: PATH.quiz,
-    element: <QuizPage/>,
-  }
+  // {
+  //   path: PATH.quiz,
+  //   element: <QuizPage/>,
+  // }
 ]
 
 const AppLayout = () => {
@@ -45,7 +45,9 @@ const AppLayout = () => {
   // if (isError) return <div>Ошибка загрузки данных useGetQuizInfoQuery</div>;
 
   const quizInfo = data as QuizInfo
-  const targetDate = new Date(quizInfo.targetDate);
+  // const targetDate = new Date(quizInfo.targetDate);
+  const targetDate = quizInfo ? new Date(quizInfo.targetDate) : new Date() + 5000
+  console.log('targetDate', quizInfo ? new Date(quizInfo.targetDate) : new Date() + 5000)
   // const targetDate = new Date('2024-12-12T18:00:00+03:00');
 
   const logoutHandler = async () => {

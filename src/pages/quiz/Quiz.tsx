@@ -86,7 +86,7 @@ export const Quiz = () => {
           }}
         >
           <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-            {
+            {data&&questions&&
               questions[currentQuestionIndex]?.position ? (
                   <Stack spacing={3}>
                     <Typography
