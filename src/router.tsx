@@ -2,7 +2,7 @@ import {createBrowserRouter, Navigate, Outlet, RouteObject, RouterProvider, useN
 import {PATH} from "./app-settings.ts";
 import {AppBar, Button, LinearProgress, Toolbar} from "@mui/material";
 import Typography from "@mui/material/Typography";
-import GamePage from "./pages/game-page.tsx";
+// import GamePage from "./pages/game-page.tsx";
 import AllPlayersPage from "./pages/all-players-page.tsx";
 import NotFoundPage from "./pages/not-found-page.tsx";
 import {LoginPage} from "./pages/login-page.tsx";
@@ -11,17 +11,22 @@ import Box from "@mui/material/Box";
 import {useSnackbar} from "./components/snackbar/snackbar-provider.tsx";
 import AllUsersPage from "./pages/all-users-page.tsx";
 import {Snowfall} from "./components/snowfall";
-// import {QuizPage} from "./pages/quiz";
+import {QuizPage} from "./pages/quiz";
+import FlipClockCountdown from "@leenguyen/react-flip-clock-countdown";
+import '@leenguyen/react-flip-clock-countdown/dist/index.css';
+import {useGetQuizInfoQuery} from "./services/quiz.service.ts";
+import {QuizInfo} from "./services/types.ts";
+
 
 const privateRoutes: RouteObject[] = [
-  {
-    path: PATH.index,
-    element: <GamePage/>,
-  },
   // {
   //   path: PATH.index,
-  //   element: <QuizPage/>,
+  //   element: <GamePage/>,
   // },
+  {
+    path: PATH.index,
+    element: <QuizPage/>,
+  },
   // {
   //   path: PATH.quiz,
   //   element: <QuizPage/>,
@@ -32,6 +37,18 @@ const AppLayout = () => {
   const navigate = useNavigate()
   const {showSnackbar} = useSnackbar();
   const [logout] = useLogoutMutation()
+  const {data, isLoading, isError} = useGetQuizInfoQuery()
+  // if (isLoading) return <CircularProgress/>;
+  console.log(data as QuizInfo)
+  console.log(isError)
+  console.log(isLoading)
+  // if (isError) return <div>Ошибка загрузки данных useGetQuizInfoQuery</div>;
+
+  const quizInfo = data as QuizInfo
+  // const targetDate = new Date(quizInfo.targetDate);
+  const targetDate = quizInfo ? new Date(quizInfo.targetDate) : new Date(Date.now() + 5000);
+  console.log('targetDate', quizInfo ? new Date(quizInfo.targetDate) : new Date(Date.now() + 5000));
+  // const targetDate = new Date('2024-12-12T18:00:00+03:00');
 
   const logoutHandler = async () => {
     const res = await logout()
@@ -46,14 +63,35 @@ const AppLayout = () => {
     <>
       <Snowfall/>
       <AppBar position="sticky">
-        <Toolbar>
-          {/*<Button color="error" variant="contained" onClick={() => navigate(PATH.index)}>home</Button>*/}
-          <Typography variant="h6" component="div" sx={{flexGrow: 1, textAlign: 'center'}}>
-            ComeON
+        <Toolbar style={{display:'flex', flexDirection: 'column', padding: '10px'}}>
+          <Typography variant="h6" component="div" sx={{flexGrow: 1, textAlign: 'center'}}>ComeON
           </Typography>
-          <Button color="warning" variant="contained" onClick={() => navigate(PATH.login)} sx={{mr: 1}}>login</Button>
-          <Button color="secondary" onClick={logoutHandler} variant="contained">logout</Button>
-          {/*<Button color="secondary" onClick={() => navigate('/')} variant="contained">Играть</Button>*/}
+          <Typography variant="body2" >До конца текущего круга осталось 👇🏻</Typography>
+          {data && (
+            <FlipClockCountdown
+              to={targetDate.getTime()}
+              labels={['Дни', 'Часы', 'Минуты', 'Секунды']}
+              labelStyle={{fontSize: 10, fontWeight: 500, textTransform: 'uppercase'}}
+              digitBlockStyle={{width: 25, height: 30, fontSize: 25}}
+              style={{
+                // '--fcc-background': '#9C27B0' as any,
+                // '--fcc-digit-color': '#ffff' as any,
+                // '--fcc-separator-color': '#9C27B0' as any,
+                // // '--fcc-label-color': '#1F76D2' as any,
+                // '--fcc-label-color': '#ffff' as any,
+                padding: '10px'
+              }}
+            >Круг завершен!</FlipClockCountdown>
+          )}
+
+          
+          {/*<Button color="error" variant="contained" onClick={() => navigate(PATH.index)}>home</Button>*/}
+          <div >
+            <Button color="warning" variant="contained" onClick={() => navigate(PATH.login)} sx={{mr: 1}}>login</Button>
+            <Button color="secondary" onClick={logoutHandler} variant="contained">logout</Button>
+            {/*<Button color="secondary" onClick={() => navigate('/')} variant="contained">Играть</Button>*/}
+          </div>
+
         </Toolbar>
       </AppBar>
 
